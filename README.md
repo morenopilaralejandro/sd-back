@@ -2,16 +2,13 @@
 Linux bash script for transferring save data between Android and Linux.
 
 ## Supported systems
-```console
-chmod +x dt2save.sh 
-./dt2save.sh
-```
+nds, gba and ps2.
 ## Options
 -u SYSTEM<br>
-Upload save data from Android to PC.
+Upload save data from Android to PC.<br><br>
 -d SYSTEM<br>
-Download save data from PC to Android.
+Download save data from PC to Android.<br><br>
 -b SYSTEM<br>
-Backup PC save data.
+Backup PC save data.<br><br>
 -h<br>
 Display help and exit.
