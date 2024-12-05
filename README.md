@@ -1,4 +1,4 @@
-# Digital Tamers 2 cross-save script 
+# Save data backup script 
 Linux bash script for transferring save data between Android and Linux.
 
 ## Supported systems
