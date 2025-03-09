@@ -4,6 +4,7 @@ pathSaveData="/home/$USER/Documents/save-data/";
 pathAn="/run/user/$UID/gvfs/mtp:host=Xiaomi_POCO_F3_ac85dfb1/Internal shared storage/"
 ndsAn="Games/nds/nds-save/";
 gbaAn="MyBoy/save/";
+ps1An="Android/data/com.github.stenzek.duckstation/files/memcards/"
 #configure ps2 memcard as folder
 ps2An="Android/data/xyz.aethersx2.android/files/memcards/ps2-save.ps2/";
 
@@ -13,7 +14,7 @@ errorEcho() {
 }
 
 usage() {
-    echo "Supported systems: nds, gba and ps2";
+    echo "Supported systems: nds, gba ps1 and ps2";
     echo "Options:";
     echo "  -u SYSTEM";
     echo "          upload save data from Android to PC";
@@ -121,6 +122,33 @@ gbaBack() {
     tar -cf "${fileName}" "gba-save";  
     echo "Done";
 }
+#fun-ps1
+ps1Upload() {
+    echo "Downloading ps1 save data from PC to Android";
+    if confirmContinue; then
+        cp -rf "${pathAn}${ps1An}"* "${pathSaveData}"ps1-save/;
+        echo "Done";
+    else
+        errorEcho "Aborted";
+    fi
+}
+ps1Download() {
+    echo "Downloading ps1 save data from PC to Android";
+    if confirmContinue; then
+        cp -rf "${pathSaveData}"ps1-save/* "${pathAn}${ps1An}";
+        echo "Done";
+    else
+        errorEcho "Aborted";
+    fi
+}
+ps1Back() {
+    echo "Creating backup for ps1 save data (PC)";
+    fileName="ps1-save-$(date +"%Y%m%d%H%M%S").tar";
+    cd ${pathSaveData};
+    tar -cf "${fileName}" "ps1-save";  
+    echo "Done";
+}
+
 #fun-ps2
 ps2Upload() {
     echo "Downloading ps2 save data from PC to Android";
@@ -160,6 +188,9 @@ handleFlags() {
                     gba) 
                         gbaUpload;
                         ;;
+                    ps1) 
+                        ps1Upload;
+                        ;;
                     ps2) 
                         ps2Upload;
                         ;;
@@ -173,6 +204,9 @@ handleFlags() {
                     gba) 
                         gbaDownload;
                         ;;
+                    ps1) 
+                        ps1Download;
+                        ;;
                     ps2) 
                         ps2Download;
                         ;;
@@ -185,6 +219,9 @@ handleFlags() {
                         ;;
                     gba) 
                         gbaBack;
+                        ;;
+                    ps1) 
+                        ps1Back;
                         ;;
                     ps2) 
                         ps2Back;
