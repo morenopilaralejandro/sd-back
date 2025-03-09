@@ -2,7 +2,7 @@
 Linux bash script for transferring save data between Android and Linux.
 
 ## Supported systems
-nds, gba and ps2.
+nds, gba, ps1 and ps2.
 ## Options
 -u SYSTEM<br>
 Upload save data from Android to PC.<br><br>

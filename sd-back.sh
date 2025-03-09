@@ -14,7 +14,7 @@ errorEcho() {
 }
 
 usage() {
-    echo "Supported systems: nds, gba ps1 and ps2";
+    echo "Supported systems: nds, gba, ps1 and ps2";
     echo "Options:";
     echo "  -u SYSTEM";
     echo "          upload save data from Android to PC";
